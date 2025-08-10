@@ -42,7 +42,11 @@ const serviceJobsRoute = createRoute({
 	component: ServiceJobsPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, clientsRoute, serviceJobsRoute]);
+const routeTree = rootRoute.addChildren([
+	indexRoute,
+	clientsRoute,
+	serviceJobsRoute,
+]);
 
 const TanStackQueryProviderContext = TanStackQueryProvider.getContext();
 const router = createRouter({

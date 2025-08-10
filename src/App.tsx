@@ -18,7 +18,7 @@ const mainListItems = [
 	{ text: "Задачи по обслуживанию", icon: <AssignmentRoundedIcon /> },
 ];
 
-const drawerWidth = 240
+const drawerWidth = 240;
 
 export default function Home() {
 	return (
@@ -48,9 +48,7 @@ export default function Home() {
 				</div>
 			</Drawer>
 
-			<main className="p-4 grow">
-
-			</main>
+			<main className="p-4 grow"></main>
 		</div>
 	);
 }

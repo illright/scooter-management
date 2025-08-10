@@ -13,7 +13,12 @@ import {
 	ListItemText,
 	Link as MUILink,
 } from "@mui/material";
-import { Outlet, type RegisteredRouter, createLink, useLocation } from "@tanstack/react-router";
+import {
+	Outlet,
+	type RegisteredRouter,
+	createLink,
+	useLocation,
+} from "@tanstack/react-router";
 import type { ComponentProps, ReactNode } from "react";
 
 const CustomLink = createLink(MUILink);

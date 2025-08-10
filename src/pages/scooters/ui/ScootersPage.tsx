@@ -21,11 +21,11 @@ export function ScootersPage() {
 type ScooterStatus = "В поездке" | "Доступен" | "Оффлайн";
 
 function renderStatus(status: ScooterStatus) {
-	const colors: { [index: string]: "success" | "default" } = {
+	const colors = {
 		"В поездке": "success",
 		Доступен: "success",
 		Оффлайн: "default",
-	};
+	} as const;
 
 	return <Chip label={status} color={colors[status]} size="small" />;
 }
