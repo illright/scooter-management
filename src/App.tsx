@@ -1,36 +1,56 @@
-import logo from './logo.svg'
+import AnalyticsRoundedIcon from "@mui/icons-material/AnalyticsRounded";
+import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
+import {
+	Drawer,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
+} from "@mui/material";
 
-function App() {
-  return (
-    <div className="text-center">
-      <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
-        <img
-          src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack
-        </a>
-      </header>
-    </div>
-  )
+const mainListItems = [
+	{ text: "Обзор", icon: <HomeRoundedIcon /> },
+	{ text: "Самокаты", icon: <AnalyticsRoundedIcon /> },
+	{ text: "Клиенты", icon: <PeopleRoundedIcon /> },
+	{ text: "Задачи по обслуживанию", icon: <AssignmentRoundedIcon /> },
+];
+
+const drawerWidth = 240
+
+export default function Home() {
+	return (
+		<div className="flex">
+			<Drawer
+				variant="permanent"
+				sx={{
+					width: drawerWidth,
+					flexShrink: 0,
+					"& .MuiDrawer-paper": {
+						width: drawerWidth,
+						boxSizing: "border-box",
+					},
+				}}
+			>
+				<div className="flex flex-col grow p-1">
+					<List>
+						{mainListItems.map((item, index) => (
+							<ListItem key={index} disablePadding sx={{ display: "block" }}>
+								<ListItemButton selected={index === 1}>
+									<ListItemIcon>{item.icon}</ListItemIcon>
+									<ListItemText primary={item.text} />
+								</ListItemButton>
+							</ListItem>
+						))}
+					</List>
+				</div>
+			</Drawer>
+
+			<main className="p-4 grow">
+
+			</main>
+		</div>
+	);
 }
-
-export default App
