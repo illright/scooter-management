@@ -1,6 +1,6 @@
 import {
-	AnalyticsRounded,
 	AssignmentRounded,
+	BikeScooterRounded,
 	HomeRounded,
 	PeopleRounded,
 } from "@mui/icons-material";
@@ -26,10 +26,13 @@ interface ListItemProps {
 
 const drawerWidth = 240;
 const mainListItems: Array<ListItemProps> = [
-	{ text: "Обзор", icon: <HomeRounded />, href: "." },
-	{ text: "Самокаты", icon: <AnalyticsRounded />, href: "/" },
+	{ text: "Самокаты", icon: <BikeScooterRounded />, href: "/" },
 	{ text: "Клиенты", icon: <PeopleRounded />, href: "/clients" },
-	{ text: "Задачи по обслуживанию", icon: <AssignmentRounded />, href: "/service-jobs" },
+	{
+		text: "Задачи по обслуживанию",
+		icon: <AssignmentRounded />,
+		href: "/service-jobs",
+	},
 ];
 
 export function LeftNavigationLayout() {

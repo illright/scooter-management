@@ -1,5 +1,16 @@
 import type { QueryOptions } from "@tanstack/react-query";
 
+interface Scooter {
+	id: string;
+	codename: string;
+	status: string;
+	battery: number;
+	coordinates: [number, number];
+	lastRideTime: string;
+	lastMaintenanceTime: string;
+	model: string;
+}
+
 export const getScootersQuery = {
 	queryKey: ["scooters"],
 	queryFn: () => {
@@ -74,6 +85,6 @@ export const getScootersQuery = {
 				lastMaintenanceTime: "2023-03-10T12:30:00Z",
 				model: "Ride",
 			},
-		];
+		] satisfies Array<Scooter>;
 	},
 } satisfies QueryOptions;

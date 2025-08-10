@@ -30,8 +30,7 @@ function renderStatus(status: ScooterStatus) {
 	return <Chip label={status} color={colors[status]} size="small" />;
 }
 
-// Dummy data for an application that manages rental e-scooters across the city
-export const columns: GridColDef[] = [
+const columns: GridColDef[] = [
 	{ field: "codename", headerName: "Кодовое имя", flex: 1.5, minWidth: 200 },
 	{
 		field: "status",
