@@ -1,3 +1,4 @@
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
 	RouterProvider,
 	createRootRoute,
@@ -6,12 +7,11 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-import * as TanStackQueryProvider from "./integrations/tanstack-query.tsx";
-
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ClientsPage } from "#/pages/clients/index.ts";
 import { ScootersPage } from "#/pages/scooters/index.ts";
 import { ServiceJobsPage } from "#/pages/service-jobs/index.ts";
+import { EnvironmentProvider } from "#/shared/api/environment.tsx";
+import * as TanStackQueryProvider from "./integrations/tanstack-query.tsx";
 import { LeftNavigationLayout } from "./layouts/LeftNavigation.tsx";
 
 const rootRoute = createRootRoute({
@@ -69,7 +69,9 @@ declare module "@tanstack/react-router" {
 export function App() {
 	return (
 		<TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
-			<RouterProvider router={router} />
+			<EnvironmentProvider>
+				<RouterProvider router={router} />
+			</EnvironmentProvider>
 		</TanStackQueryProvider.Provider>
 	);
 }

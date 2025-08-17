@@ -1,17 +1,23 @@
 import {
 	AssignmentRounded,
 	BikeScooterRounded,
-	HomeRounded,
 	PeopleRounded,
 } from "@mui/icons-material";
 import {
+	Box,
+	Divider,
 	Drawer,
+	FormControl,
+	InputLabel,
 	List,
 	ListItem,
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
 	Link as MUILink,
+	MenuItem,
+	Select,
+	Typography,
 } from "@mui/material";
 import {
 	Outlet,
@@ -19,7 +25,8 @@ import {
 	createLink,
 	useLocation,
 } from "@tanstack/react-router";
-import type { ComponentProps, ReactNode } from "react";
+import { type ComponentProps, type ReactNode, use } from "react";
+import { type Environment, EnvironmentContext } from "#/shared/api";
 
 const CustomLink = createLink(MUILink);
 
@@ -44,6 +51,7 @@ export function LeftNavigationLayout() {
 	const pathname = useLocation({
 		select: (location) => location.pathname,
 	});
+	const { environment, setEnvironment } = use(EnvironmentContext) ?? {};
 
 	return (
 		<div className="flex">
@@ -73,6 +81,27 @@ export function LeftNavigationLayout() {
 							</ListItem>
 						))}
 					</List>
+
+					<div className="mt-auto">
+						<Divider sx={{ mb: 2 }} />
+						<Box sx={{ px: 2, pb: 6 }}>
+							<Typography variant="caption" sx={{ mb: 1, display: 'block' }}>
+								Окружение
+							</Typography>
+							<FormControl fullWidth size="small">
+								<InputLabel id="environment-select-label">Среда</InputLabel>
+								<Select
+									labelId="environment-select-label"
+									value={environment}
+									label="Среда"
+									onChange={(event) => setEnvironment?.(event.target.value as Environment)}
+								>
+									<MenuItem value="stage">Stage</MenuItem>
+									<MenuItem value="prod">Production</MenuItem>
+								</Select>
+							</FormControl>
+						</Box>
+					</div>
 				</div>
 			</Drawer>
 
